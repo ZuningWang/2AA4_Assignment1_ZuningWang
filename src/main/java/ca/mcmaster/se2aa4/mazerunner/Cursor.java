@@ -15,7 +15,7 @@ public class Cursor{
 
     public boolean moveForward() {
         Position newPosition = currentPosition.moveOneStep(currentDirection);
-        if(maze.isValidPosition(newPosition)){
+        if(maze.isValidPosition(newPosition)){ //check if the position is valid
             currentPosition = newPosition;
             System.out.println("Successfully moved forward");
             return true;
@@ -62,11 +62,11 @@ public class Cursor{
     }
 
 
-    public void printPosition(){
+    public void printPosition(){ //for test
         System.out.println("Current Position: " + currentPosition.getRow()+ " " + currentPosition.getCol());
     }
 
-    public void pirntDirection(){
+    public void pirntDirection(){ //for test
         System.out.println("Current Direction: " + currentDirection.name());
     }
 

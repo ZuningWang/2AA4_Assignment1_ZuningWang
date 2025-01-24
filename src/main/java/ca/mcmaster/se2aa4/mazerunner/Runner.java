@@ -11,14 +11,15 @@ public class Runner{
         cursor = new Cursor(maze, new Position(0,0), Direction.RIGHT);
     }
 
+    //validate whether the path is correct
     public void validationPath(String path){
         PathValidation pathValidation = new PathValidation(maze, cursor);
-        if(pathValidation.validateFromLeftEntry(path)){
-            System.out.println("The path is valid");
-        }else if(pathValidation.validateFromRightEntry(path)){
-            System.out.println("The path is valid");
+        if(pathValidation.validateFromLeftEntry(path)){ //starts from left entry
+            System.out.println("Correct Path");
+        }else if(pathValidation.validateFromRightEntry(path)){ //starts from right entry
+            System.out.println("Correct Path");
         }else{
-            System.out.println("The path is not valid");
+            System.out.println("Incorrect Path");
         }
     }
 }

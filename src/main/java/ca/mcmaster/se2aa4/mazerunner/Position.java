@@ -9,6 +9,7 @@ public class Position{
         this.col = col;
     }
 
+
     public Position moveOneStep(Direction direction){
         switch(direction){
             case UP:

@@ -57,7 +57,7 @@ public class Main {
                 }
                 System.out.print(System.lineSeparator());
 
-
+                //checking -p flag
                 if(cmd.hasOption("p")){
                     Runner aRun = new Runner(maze);
                     aRun.validationPath(cmd.getOptionValue("p"));

@@ -69,6 +69,7 @@ public class PathValidation {
         return false;
     }
 
+    //check if the argument position is exit position
     public boolean reachExit(Position exit){
         if(cursor.getCurrentPosition().getRow() == exit.getRow() && cursor.getCurrentPosition().getCol() == exit.getCol()){
             return true;

@@ -12,10 +12,10 @@ public class Maze{
 
     public void findEntry(){
         for(int i = 0; i < maze.length; i++){
-            if(maze[i][0] == ' '){
+            if(maze[i][0] == ' '){ //find left entry
                 leftEntry = new Position(i,0);
             }
-            if(maze[i][maze[i].length-1] == ' '){
+            if(maze[i][maze[i].length-1] == ' '){ //find right entry
                 rightEntry = new Position(i,maze[i].length-1);
             }
         }
