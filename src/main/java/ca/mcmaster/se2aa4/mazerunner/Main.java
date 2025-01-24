@@ -19,6 +19,7 @@ public class Main {
         logger.info("Starting Maze Runner");
         Options options = new Options();
         options.addOption("i", true, "input file path");
+        options.addOption("p", true, "input maze path");
         CommandLineParser parser = new DefaultParser();
 
         char[][] maze = null;
@@ -42,6 +43,8 @@ public class Main {
                     System.out.print(System.lineSeparator());
                     numRow++;
                 }
+
+                //put contents into the 2D array
                 maze = new char[numRow][numCol];
                 BufferedReader areader = new BufferedReader(new FileReader(cmd.getOptionValue("i")));
                 String newline;
@@ -51,22 +54,18 @@ public class Main {
                         maze[rowIndex][idx] = newline.charAt(idx);
                     }
                     rowIndex++;
-                    System.out.print(System.lineSeparator());
+                }
+                System.out.print(System.lineSeparator());
+
+
+                if(cmd.hasOption("p")){
+                    Runner aRun = new Runner(maze);
+                    aRun.validationPath(cmd.getOptionValue("p"));
                 }
             }
 
-            Maze aMaze = new Maze(maze);
-            aMaze.printMaze();
-            System.out.println("Num row is " + numRow);
-            System.out.println("Num col is " + numCol);
-            Position position = new Position(0,0);
-            Cursor cursor = new Cursor(aMaze, position, Direction.LEFT);
-            cursor.printPosition();
-            cursor.moveForward();
-            cursor.printPosition();
-            cursor.turnRight();
-            cursor.moveForward();
-            cursor.printPosition();
+
+
 
 
         } catch(Exception e) {
