@@ -14,7 +14,11 @@ public class PathValidation {
     public boolean validateFromLeftEntry(String path){
         System.out.println("Validating from left entry");
         Position entry = maze.getLeftEntry();
+        System.out.println("Entry: ");
+        entry.printPosition();
         Position exit = maze.getRightEntry();
+        System.out.println("Exit: ");
+        entry.printPosition();
         cursor.setCurrentPosition(entry);
         cursor.setCurrentDirection(Direction.RIGHT);
 

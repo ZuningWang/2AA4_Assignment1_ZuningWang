@@ -61,6 +61,9 @@ public class Main {
                 if(cmd.hasOption("p")){
                     Runner aRun = new Runner(maze);
                     aRun.validationPath(cmd.getOptionValue("p"));
+                }else{
+                    Runner otherRun = new Runner(maze);
+                    otherRun.rightHandPathFinder();
                 }
             }
 

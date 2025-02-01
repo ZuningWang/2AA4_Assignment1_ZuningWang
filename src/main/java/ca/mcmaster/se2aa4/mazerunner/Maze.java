@@ -8,15 +8,20 @@ public class Maze{
     public Maze(char[][] maze){
         this.maze = maze;
         findEntry();
+        System.out.println("执行maze构造方法");
     }
 
     public void findEntry(){
         for(int i = 0; i < maze.length; i++){
             if(maze[i][0] == ' '){ //find left entry
                 leftEntry = new Position(i,0);
+                System.out.println("Entry: ");
+                leftEntry.printPosition();
             }
             if(maze[i][maze[i].length-1] == ' '){ //find right entry
                 rightEntry = new Position(i,maze[i].length-1);
+                System.out.println("Entry: ");
+                rightEntry.printPosition();
             }
         }
     }

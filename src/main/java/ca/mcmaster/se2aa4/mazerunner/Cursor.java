@@ -25,6 +25,14 @@ public class Cursor{
         }
     }
 
+    public boolean reachExit(Position exit){
+        if(currentPosition.getRow() == exit.getRow() && currentPosition.getCol() == exit.getCol()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void turnRight(){
         switch(currentDirection){
             case Direction.UP:
