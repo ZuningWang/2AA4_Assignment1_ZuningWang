@@ -13,15 +13,15 @@ public class RightHandFinder implements FindingPath{
             Position rightPosition = cursor.getCurrentPosition().getRightPosition(cursor.getCurrentDirection());
             Position leftPosition = cursor.getCurrentPosition().getLeftPosition(cursor.getCurrentDirection());
             Position nextPosition = cursor.getCurrentPosition().getNextPosition(cursor.getCurrentDirection());
-            if(maze.isValidPosition(rightPosition)){ //right position is empty
+            if(maze.isValidPosition(rightPosition)){ //right position is valid
                 cursor.turnRight();
                 cursor.moveForward();
                 path.add("R");
                 path.add("F");
-            }else if(maze.isValidPosition(nextPosition)){
+            }else if(maze.isValidPosition(nextPosition)){ //if next position is valid
                 cursor.moveForward();
                 path.add("F");
-            }else if(maze.isValidPosition(leftPosition)){
+            }else if(maze.isValidPosition(leftPosition)){ //if left position is valid
                 cursor.turnLeft();
                 cursor.moveForward();
                 path.add("L");

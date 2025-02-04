@@ -12,13 +12,8 @@ public class PathValidation {
     }
 
     public boolean validateFromLeftEntry(String path){
-        System.out.println("Validating from left entry");
         Position entry = maze.getLeftEntry();
-        System.out.println("Entry: ");
-        entry.printPosition();
         Position exit = maze.getRightEntry();
-        System.out.println("Exit: ");
-        entry.printPosition();
         cursor.setCurrentPosition(entry);
         cursor.setCurrentDirection(Direction.RIGHT);
 
@@ -37,7 +32,7 @@ public class PathValidation {
                     cursor.turnRight();
                     break;
             }
-            if(reachExit(exit)){
+            if(cursor.reachExit(exit)){
                 return true;
             }
         }
@@ -45,7 +40,6 @@ public class PathValidation {
     }
 
     public boolean validateFromRightEntry(String path){
-        System.out.println("Validating from right entry");
         Position entry = maze.getRightEntry();
         Position exit = maze.getLeftEntry();
         cursor.setCurrentPosition(entry);
@@ -66,20 +60,13 @@ public class PathValidation {
                     cursor.turnRight();
                     break;
             }
-            if(reachExit(exit)){
+            if(cursor.reachExit(exit)){
                 return true;
             }
         }
         return false;
     }
 
-    //check if the argument position is exit position
-    public boolean reachExit(Position exit){
-        if(cursor.getCurrentPosition().getRow() == exit.getRow() && cursor.getCurrentPosition().getCol() == exit.getCol()){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
 }

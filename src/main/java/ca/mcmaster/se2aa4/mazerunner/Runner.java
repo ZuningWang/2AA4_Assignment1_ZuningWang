@@ -14,30 +14,31 @@ public class Runner{
     }
 
     //validate whether the path is correct
-    public void validationPath(String aPath){
-        String path = toCanonical(aPath);
-        Maze maze = new Maze(aMaze);
-        Cursor cursor = new Cursor(maze, new Position(0,0), Direction.RIGHT);
-        PathValidation pathValidation = new PathValidation(maze, cursor);
-        if(pathValidation.validateFromLeftEntry(path)){ //starts from left entry
-            System.out.println("Correct Path");
-        }else if(pathValidation.validateFromRightEntry(path)){ //starts from right entry
-            System.out.println("Correct Path");
-        }else{
-            System.out.println("Incorrect Path");
+    public void validationPath(String aPath) {
+        try {
+            String path = toCanonical(aPath);
+            Maze maze = new Maze(aMaze);
+            Cursor cursor = new Cursor(maze, new Position(0, 0), Direction.RIGHT);
+            PathValidation pathValidation = new PathValidation(maze, cursor);
+            if (pathValidation.validateFromLeftEntry(path)) { //starts from left entry
+                System.out.println("correct Path");
+            } else if (pathValidation.validateFromRightEntry(path)) { //starts from right entry
+                System.out.println("correct Path");
+            } else {
+                System.out.println("incorrect Path");
+            }
+        }catch(NullPointerException e){
+            System.out.println("Null pointer exception" + e.getMessage());
         }
     }
 
     public void rightHandPathFinder(){
-        RightHandFinder finder = new RightHandFinder();
-        //String path = toFactorized(finder.findPath(aMaze));
-        System.out.println(toFactorized(finder.findPath(aMaze)));
-
-//        try {
-//            Files.writeString(Paths.get("path.txt"), path);
-//        } catch (IOException e) {
-//            System.err.println("Error writing to file: " + e.getMessage());
-//        }
+        try {
+            FindingPath finder = new RightHandFinder();
+            System.out.println(toFactorized(finder.findPath(aMaze)));
+        }catch(NullPointerException e){
+            System.out.println("Null pointer exception" + e.getMessage());
+        }
     }
 
     public String toFactorized(String path){

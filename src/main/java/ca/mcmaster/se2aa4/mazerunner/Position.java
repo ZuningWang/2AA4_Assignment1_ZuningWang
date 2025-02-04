@@ -73,7 +73,4 @@ public class Position{
         return col;
     }
 
-    public void printPosition(){
-        System.out.println("Position is " + row + ","+col);
-    }
 }

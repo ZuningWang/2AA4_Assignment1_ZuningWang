@@ -17,20 +17,19 @@ public class Cursor{
         Position newPosition = currentPosition.moveOneStep(currentDirection);
         if(maze.isValidPosition(newPosition)){ //check if the position is valid
             currentPosition = newPosition;
-            System.out.println("Successfully moved forward");
             return true;
         }else{
-            System.out.println("wrong position");
             return false;
         }
     }
 
     public boolean reachExit(Position exit){
-        if(currentPosition.getRow() == exit.getRow() && currentPosition.getCol() == exit.getCol()){
-            return true;
-        }else{
-            return false;
-        }
+            if(currentPosition.getRow() == exit.getRow() && currentPosition.getCol() == exit.getCol()){
+                return true;
+            }else{
+                return false;
+            }
+
     }
 
     public void turnRight(){
@@ -48,7 +47,6 @@ public class Cursor{
                 currentDirection = Direction.DOWN;
                 break;
         }
-        System.out.println("Successfully turned right");
     }
 
     public void turnLeft(){
@@ -66,17 +64,9 @@ public class Cursor{
                 currentDirection = Direction.UP;
                 break;
         }
-        System.out.println("Successfully turned left");
     }
 
 
-    public void printPosition(){ //for test
-        System.out.println("Current Position: " + currentPosition.getRow()+ " " + currentPosition.getCol());
-    }
-
-    public void pirntDirection(){ //for test
-        System.out.println("Current Direction: " + currentDirection.name());
-    }
 
     public void setCurrentPosition(Position newPosition){
         currentPosition = newPosition;
