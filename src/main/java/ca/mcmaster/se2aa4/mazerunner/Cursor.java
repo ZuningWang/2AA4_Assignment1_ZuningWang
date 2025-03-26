@@ -1,13 +1,41 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 import ca.mcmaster.se2aa4.mazerunner.Direction;
+import java.util.*;
 
 public class Cursor{
+    private static Cursor instance;
+
     private Maze maze;
     private Position currentPosition;
     private Direction currentDirection;
 
-    public Cursor(Maze maze, Position position, Direction direction){
+    private List<Observer> observers = new ArrayList<Observer>();
+
+    private Cursor(){
+
+    }
+
+    public void addObserver(Observer observer){
+        observers.add(observer);
+    }
+    public void removeObserver(Observer observer){
+        observers.remove(observers);
+    }
+    public void notifyObservers(String event){
+        for(Observer observer : observers){
+            observer.update(event);
+        }
+    }
+
+    public static Cursor getInstance(){
+        if(instance == null){
+            instance = new Cursor();
+        }
+        return instance;
+    }
+
+    public void initialize(Maze maze, Position position, Direction direction){
         this.maze = maze;
         currentPosition = position;
         currentDirection = direction;
@@ -17,6 +45,7 @@ public class Cursor{
         Position newPosition = currentPosition.moveOneStep(currentDirection);
         if(maze.isValidPosition(newPosition)){ //check if the position is valid
             currentPosition = newPosition;
+            notifyObservers("F");
             return true;
         }else{
             return false;
@@ -24,11 +53,11 @@ public class Cursor{
     }
 
     public boolean reachExit(Position exit){
-            if(currentPosition.getRow() == exit.getRow() && currentPosition.getCol() == exit.getCol()){
-                return true;
-            }else{
-                return false;
-            }
+        if(currentPosition.getRow() == exit.getRow() && currentPosition.getCol() == exit.getCol()){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
@@ -47,6 +76,7 @@ public class Cursor{
                 currentDirection = Direction.DOWN;
                 break;
         }
+        notifyObservers("R");
     }
 
     public void turnLeft(){
@@ -64,6 +94,7 @@ public class Cursor{
                 currentDirection = Direction.UP;
                 break;
         }
+        notifyObservers("L");
     }
 
 
