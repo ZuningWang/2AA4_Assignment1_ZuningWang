@@ -24,7 +24,7 @@ public class Runner{
         try {
             Maze aMaze = Maze.getInstance();
             aMaze.initialize(maze);
-            String path = toCanonical(aPath);
+            String path = PathRecorder.toCanonical(aPath);
             Cursor.getInstance().initialize(aMaze, new Position(0, 0), Direction.RIGHT);
             PathValidation pathValidation = new PathValidation(aMaze, Cursor.getInstance());
             if (pathValidation.validateFromLeftEntry(path)) { //starts from left entry
@@ -55,21 +55,5 @@ public class Runner{
     }
 
 
-    public String toCanonical(String path){
-        String str = "";
-        int index = 0;
-        while(index < path.length()){
-            String num = "";
-            while(path.charAt(index) >= '0' && path.charAt(index) <= '9'){
-                num += path.charAt(index);
-                index++;
-            }
-            int number = Integer.parseInt(num);
-            for(int i = 0; i < number; i++){
-                str += path.charAt(index);
-            }
-            index++;
-        }
-        return str;
-    }
+
 }

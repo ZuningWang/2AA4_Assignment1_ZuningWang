@@ -2,7 +2,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.*;
 
-public class PathRecorder implements Observer{
+public class PathRecorder implements Observer{  //record the path
     private StringBuilder path = new StringBuilder();
 
     public void update(String command){
@@ -31,6 +31,24 @@ public class PathRecorder implements Observer{
             }
             str += numSame +""+ path.charAt(index);
             index += numSame;
+        }
+        return str;
+    }
+
+    public static String toCanonical(String path){
+        String str = "";
+        int index = 0;
+        while(index < path.length()){
+            String num = "";
+            while(path.charAt(index) >= '0' && path.charAt(index) <= '9'){
+                num += path.charAt(index);
+                index++;
+            }
+            int number = Integer.parseInt(num);
+            for(int i = 0; i < number; i++){
+                str += path.charAt(index);
+            }
+            index++;
         }
         return str;
     }

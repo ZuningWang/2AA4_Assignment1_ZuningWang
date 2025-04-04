@@ -68,32 +68,32 @@ class CursorTest {
     @Test
     void testTurnRight() {
         // Initial direction is RIGHT
-        cursor.turnRight(); // RIGHT -> DOWN
+        cursor.turnRight(); // RIGHT to DOWN
         assertEquals(Direction.DOWN, cursor.getCurrentDirection());
 
-        cursor.turnRight(); // DOWN -> LEFT
+        cursor.turnRight(); // DOWN to LEFT
         assertEquals(Direction.LEFT, cursor.getCurrentDirection());
 
-        cursor.turnRight(); // LEFT -> UP
+        cursor.turnRight(); // LEFT to UP
         assertEquals(Direction.UP, cursor.getCurrentDirection());
 
-        cursor.turnRight(); // UP -> RIGHT
+        cursor.turnRight(); // UP to RIGHT
         assertEquals(Direction.RIGHT, cursor.getCurrentDirection());
     }
 
     @Test
     void testTurnLeft() {
         // Initial direction is RIGHT
-        cursor.turnLeft(); // RIGHT -> UP
+        cursor.turnLeft(); // RIGHT to UP
         assertEquals(Direction.UP, cursor.getCurrentDirection());
 
-        cursor.turnLeft(); // UP -> LEFT
+        cursor.turnLeft(); // UP to LEFT
         assertEquals(Direction.LEFT, cursor.getCurrentDirection());
 
-        cursor.turnLeft(); // LEFT -> DOWN
+        cursor.turnLeft(); // LEFT to DOWN
         assertEquals(Direction.DOWN, cursor.getCurrentDirection());
 
-        cursor.turnLeft(); // DOWN -> RIGHT
+        cursor.turnLeft(); // DOWN to RIGHT
         assertEquals(Direction.RIGHT, cursor.getCurrentDirection());
     }
 

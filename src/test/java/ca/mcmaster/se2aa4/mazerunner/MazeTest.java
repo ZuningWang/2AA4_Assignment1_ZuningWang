@@ -15,7 +15,7 @@ public class MazeTest {
 
     @Test
     void testSingletonInstance() {
-        // Verify always get the same instance
+        // Verify whether will get the same instance
         Maze anotherMazeReference = Maze.getInstance();
         assertSame(maze, anotherMazeReference);
     }
@@ -58,13 +58,13 @@ public class MazeTest {
         assertTrue(maze.isValidPosition(new Position(1, 1)));
         assertTrue(maze.isValidPosition(new Position(2, 1)));
 
-        // Test invalid positions (walls)
+        // Test invalid positions
+        assertFalse(maze.isValidPosition(new Position(-1, 0)));
+        assertFalse(maze.isValidPosition(new Position(0, -1)));
         assertFalse(maze.isValidPosition(new Position(0, 0)));
         assertFalse(maze.isValidPosition(new Position(4, 2)));
 
-        // Test out of bounds positions
-        assertFalse(maze.isValidPosition(new Position(-1, 0)));
-        assertFalse(maze.isValidPosition(new Position(0, -1)));
+
     }
 
     @Test
@@ -83,8 +83,8 @@ public class MazeTest {
         Position leftEntry = maze.getLeftEntry();
         Position rightEntry = maze.getRightEntry();
 
-        assertNotNull(leftEntry, "Left entry should not be null");
-        assertNotNull(rightEntry, "Right entry should not be null");
+        assertNotNull(leftEntry);
+        assertNotNull(rightEntry);
 
         // Check left entry
         assertEquals(3, leftEntry.getRow());

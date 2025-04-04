@@ -10,7 +10,7 @@ public class Cursor{
     private Position currentPosition;
     private Direction currentDirection;
 
-    private List<Observer> observers = new ArrayList<Observer>();
+    private List<Observer> observers = new ArrayList<Observer>(); //lsit of observers
 
     private Cursor(){
 
